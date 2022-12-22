@@ -1,4 +1,3 @@
-import pprint
 from pymongo import MongoClient
 
 client = MongoClient()
@@ -24,11 +23,8 @@ for i in range(1,101):
         }
         rec = mycollection.insert_one(record)
 count = 0
-#col = mycollection.find({}, )
-#pprint.pprint(mycollection.index_information())
+
 for row in mycollection.find():
     print(row) 
     count+=1
 print(count)
-
-#mycollection.drop()
