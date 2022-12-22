@@ -26,7 +26,6 @@ class Gallery(QWidget):
         status_filter.addItems(['All', 'Good', 'Bad'])
         status_filter.setGeometry(400,10,180,50)
         status_filter.currentTextChanged.connect(self.print_drop_text)
-        #self.setCentralWidget(drop)
     
     def print_drop_text(self, text_select):
         print(text_select)
@@ -47,7 +46,6 @@ class MainWindow(QMainWindow):
         btn = QPushButton("Analysis")
         btn.pressed.connect(self.activate_tab_1)
         button_layout.addWidget(btn)
-        #self.stacklayout.addWidget(Text())
         self.stacklayout.addWidget(Analysis())
 
         btn = QPushButton("Image Gallery")
@@ -74,8 +72,6 @@ class MainWindow(QMainWindow):
     def print_drop_text(self, text_select):
         print(text_select)
         
-
-
 
 app = QApplication(sys.argv)
 
