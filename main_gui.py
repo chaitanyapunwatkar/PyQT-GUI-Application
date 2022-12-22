@@ -3,6 +3,7 @@ from PySide2.QtCore import Qt
 from PySide2.QtWidgets import * 
 from PySide2.QtGui import QPalette, QColor
 
+# Analysis Page UI components
 class Analysis(QWidget):
     def __init__(self):
         super(Analysis, self).__init__()
@@ -17,7 +18,9 @@ class Analysis(QWidget):
     
     def print_drop_text(self, text_select):
         print(text_select)
-
+        
+        
+#Gallery Page UI components
 class Gallery(QWidget):
     def __init__(self):
         super(Gallery, self).__init__()
@@ -29,7 +32,8 @@ class Gallery(QWidget):
     
     def print_drop_text(self, text_select):
         print(text_select)
-        
+
+#Window Page - Parent Class        
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
