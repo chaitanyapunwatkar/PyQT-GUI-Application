@@ -13,8 +13,9 @@ class PieChart(QWidget):
         db = DbQueries()
         g_count = db.status_filter('Good')
         b_count = db.status_filter('Bad')
-        series.append("Good",len(g_count))
-        series.append("Bad", len(b_count))
+        total_count = db.count()
+        series.append("Good {}%".format((len(g_count)*100)/total_count),len(g_count))
+        series.append("Bad {}%".format((len(b_count)*100)/total_count),len(b_count))
         Slice = QtCharts.QPieSlice()
         Slice = series.slices()[1]
         Slice.setExploded(True)
@@ -22,6 +23,7 @@ class PieChart(QWidget):
         Slice.setBrush(QColor("red"))
         Slice = series.slices()[0]
         Slice.setBrush(QColor('lightgreen'))
+        Slice.setLabelVisible(True)
         
         chart = QtCharts.QChart()
         chart.legend().setVisible(True)

@@ -16,17 +16,13 @@ class ImagePal(QWidget):
         self.img2 = self.img.scaled(128,128)
         self.label.setPixmap(self.img2)
         
-        self.ind_label = QLabel("", self)
-        self.ind_label.setStyleSheet("background-color: {0};".format(color))
-        
+        self.ind_label = QLabel(" ", self)
+        self.ind_label.setStyleSheet("background-color: {0};width: 6px; margin: 0px px 0px 0px;".format(color))
         self.Vlayout.addWidget(self.label)
-        #self.ind_label.move(100,10)
         self.label.setAlignment(Qt.AlignCenter)
         self.Vlayout.addWidget(self.ind_label)
         self.ind_label.setAlignment(Qt.AlignCenter)
-        self.Vlayout.setSpacing(0)
-        self.Vlayout.setContentsMargins(0, 0, 0, 0) 
-        self.ind_label.setFixedSize(110,10)
+        self.ind_label.setFixedSize(150,10)
        
 
 class Gallery_All(QWidget):
@@ -71,6 +67,7 @@ class Gallery_Bad(QWidget):
             self.Stack = QStackedWidget(self)
             self.scrollWidgetContents = QWidget(self)
             
+
             self.scrollArea.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
             self.scrollArea.setWidgetResizable(True)
             self.Glayout = QGridLayout(self.scrollWidgetContents)
@@ -89,6 +86,7 @@ class Gallery_Bad(QWidget):
                 for column in range(5):
                     if count<c :
                         self.Glayout.addWidget(ImagePal(uIdList[count],'red'), row, column)
+                        self.Glayout.setRowMinimumHeight(3,400)
                         count+=1
             self.setLayout(self.Vlayout)
 
@@ -209,11 +207,11 @@ class MainWindow(QMainWindow):
         self.stacklayout.setCurrentIndex(1)
 
 
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
 
-app = QApplication(sys.argv)
+    window = MainWindow()
+    window.setFixedSize(1100,800)
+    window.show()
 
-window = MainWindow()
-window.setFixedSize(1000,800)
-window.show()
-
-app.exec_()
+    app.exec_()
