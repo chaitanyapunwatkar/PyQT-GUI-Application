@@ -4,6 +4,7 @@ from PySide2.QtWidgets import *
 from PySide2.QtGui import QPalette, QColor, QPixmap
 from db_query import DbQueries
 from math import ceil
+from GraphView import PieChart
 
 class ImagePal(QWidget):
     def __init__(self, c, color):
@@ -126,14 +127,21 @@ class Analysis(QWidget):
     def __init__(self):
         super(Analysis, self).__init__()
         self.setAutoFillBackground(True)
+        self.Vlayout = QVBoxLayout(self) 
+        self.Hlayout = QHBoxLayout(self)
+        self.Vlayout.addLayout(self.Hlayout)
         label_t = QLabel("SKU ID: ", self)
-        drop = QComboBox(self)
+        dropBox = QComboBox(self)
         label_t.setGeometry(10,10,100, 50)
-        drop.setGeometry(65,10,200,50)
-        drop.addItems(['Item1', 'Item2']) 
-        drop.currentTextChanged.connect(self.print_drop_text)
-        #self.setCentralWidget(drop)
-    
+        dropBox.setGeometry(65,10,200,50)
+        dropBox.addItems(['Item1', 'Item2'])
+        self.Hlayout.addWidget(label_t)
+        self.Hlayout.addWidget(dropBox)
+        dropBox.currentTextChanged.connect(self.print_drop_text)
+        self.Vlayout.addWidget(PieChart())
+        self.setLayout(self.Vlayout)
+        
+         
     def print_drop_text(self, text_select):
         print(text_select)
         
