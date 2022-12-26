@@ -33,3 +33,6 @@ The Project is about building a protoype of Post-Inspection Analysis. The tech s
 5. To view Charts and Images according to database 'db_query' module is imported in 'main_gui.py'.
 6. To run the code in your system, before running 'main_gui.py' run th mongo_db_insert.py to insert the data in database.
 7. Make sure while running the 'main_gui.py' db_query.py and GraphView.py is placed in same folder and the dataset folder is named 'Item1'
+![image](https://user-images.githubusercontent.com/31817696/209574930-e9bb798c-0e6b-4bd1-aa54-850c36fc654b.png)
+
+![image](https://user-images.githubusercontent.com/31817696/209574942-d5df025c-e8dd-4925-9eb7-dfbc0583b38d.png)
