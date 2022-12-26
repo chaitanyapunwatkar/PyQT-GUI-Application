@@ -1,5 +1,5 @@
 import sys
-from PySide2.QtCore import Qt
+from PySide2.QtCore import *
 from PySide2.QtWidgets import * 
 from PySide2.QtGui import QPalette, QColor, QPixmap
 from db_query import DbQueries
@@ -19,10 +19,10 @@ class ImagePal(QWidget):
         self.ind_label = QLabel(" ", self)
         self.ind_label.setStyleSheet("background-color: {0};width: 6px; margin: 0px px 0px 0px;".format(color))
         self.Vlayout.addWidget(self.label)
-        self.label.setAlignment(Qt.AlignCenter)
+        # self.label.setAlignment(Qt.AlignCenter)
         self.Vlayout.addWidget(self.ind_label)
-        self.ind_label.setAlignment(Qt.AlignCenter)
-        self.ind_label.setFixedSize(150,10)
+        # self.ind_label.setAlignment(Qt.AlignCenter)
+        self.ind_label.setFixedSize(130,10)
        
 
 class Gallery_All(QWidget):
@@ -127,14 +127,16 @@ class Analysis(QWidget):
         self.setAutoFillBackground(True)
         self.Vlayout = QVBoxLayout(self) 
         self.Hlayout = QHBoxLayout(self)
+        #self.Hlayout.setStretch()
         self.Vlayout.addLayout(self.Hlayout)
         label_t = QLabel("SKU ID: ", self)
         dropBox = QComboBox(self)
-        label_t.setGeometry(10,10,100, 50)
-        dropBox.setGeometry(65,10,200,50)
+        # label_t.setGeometry(10,10,100, 50)
+        # dropBox.setGeometry(65,10,200,50)
         dropBox.addItems(['Item1', 'Item2'])
         self.Hlayout.addWidget(label_t)
         self.Hlayout.addWidget(dropBox)
+        self.Hlayout.setStretch(1,0)
         dropBox.currentTextChanged.connect(self.print_drop_text)
         self.Vlayout.addWidget(PieChart())
         self.setLayout(self.Vlayout)
@@ -150,6 +152,7 @@ class Gallery(QWidget):
         super(Gallery, self).__init__()
         self.setAutoFillBackground(True)
         self.Vlayout = QVBoxLayout(self) 
+        self.Hlayout = QHBoxLayout(self)
         self.Stack = QStackedWidget(self)
         status_filter = QComboBox(self)
         self.scrollWidgetContents = QWidget(self)
@@ -159,8 +162,9 @@ class Gallery(QWidget):
         self.Stack.addWidget(Gallery_Bad())
 
         status_filter.addItems(['All', 'Good', 'Bad'])
-        status_filter.setGeometry(400,10,180,50)
-        self.Vlayout.addWidget(status_filter)
+        self.Hlayout.addStretch(1)
+        self.Vlayout.addLayout(self.Hlayout)
+        self.Hlayout.addWidget(status_filter)
         self.Vlayout.addWidget(self.Stack)
         status_filter.currentTextChanged.connect(self.print_drop_text)
     
@@ -178,33 +182,19 @@ class MainWindow(QMainWindow):
         super().__init__()
         
         self.setWindowTitle("Post_Inspection Analysis")
-        widget = QWidget()
-        pagelayout = QHBoxLayout()
-        button_layout = QVBoxLayout()
-        self.stacklayout = QStackedLayout()
-             
-        pagelayout.addLayout(button_layout)
-        pagelayout.addLayout(self.stacklayout)
-        
-        btn = QPushButton("Analysis")
-        btn.pressed.connect(self.activate_tab_1)
-        button_layout.addWidget(btn)
-        self.stacklayout.addWidget(Analysis())
+        tabs = QTabWidget()
+        tabs.setTabPosition(QTabWidget.North)
+        tabs.setMovable(True)
+        tabs.addTab(Analysis(), "Analysis Tab")
+        tabs.addTab(Gallery(), "Image Gallery Tab")
 
-        btn = QPushButton("Image Gallery")
-        btn.pressed.connect(self.activate_tab_2)
-        button_layout.addWidget(btn)
-        self.stacklayout.addWidget(Gallery())
-     
-   
-        widget.setLayout(pagelayout)
-        self.setCentralWidget(widget)
+        self.setCentralWidget(tabs)
 
-    def activate_tab_1(self):
-        self.stacklayout.setCurrentIndex(0)
+    # def activate_tab_1(self):
+    #     self.stacklayout.setCurrentIndex(0)
 
-    def activate_tab_2(self):
-        self.stacklayout.setCurrentIndex(1)
+    # def activate_tab_2(self):
+    #     self.stacklayout.setCurrentIndex(1)
 
 
 if __name__ == "__main__":
