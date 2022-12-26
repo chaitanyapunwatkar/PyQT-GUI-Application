@@ -165,7 +165,7 @@ class Analysis(QWidget):
         dropBox.addItems(['Item1', 'Item2'])
         self.Hlayout.addWidget(label_t)
         self.Hlayout.addWidget(dropBox)
-        self.Hlayout.setAlignment(Qt.AlignRight)
+        self.Hlayout.setAlignment(Qt.AlignLeft)
         dropBox.currentTextChanged.connect(self.print_drop_text)
         self.Vlayout.addWidget(PieChart())
         self.Vlayout.setAlignment(Qt.AlignTop)
@@ -251,9 +251,8 @@ class MainWindow(QMainWindow):
 
 
 if __name__ == "__main__":
-    """ This part of code is excuted first when we run the code.
-    """
-    
+    """ This part of code is excuted first when we run the code."""
+
     app = QApplication(sys.argv)
 
     window = MainWindow()
