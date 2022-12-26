@@ -1,5 +1,5 @@
 
-""" This Module will help to view PieChart """
+""" This Module will help to view Charts """
 
 from PySide2.QtWidgets import * 
 import sys
