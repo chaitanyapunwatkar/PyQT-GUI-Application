@@ -1,3 +1,6 @@
+
+""" This Module will help to view PieChart """
+
 from PySide2.QtWidgets import * 
 import sys
 from PySide2.QtCharts import QtCharts
@@ -6,6 +9,11 @@ from PySide2.QtCore import Qt
 from db_query import DbQueries
 
 class PieChart(QWidget):
+    """ This Class will help to view the inspection data present in table in Pie Chart View.
+
+    Args:
+        QWidget (Class inherits the QtWidgets): To view the 
+    """
     def __init__(self):
         super(PieChart, self).__init__()        
         series = QtCharts.QPieSeries()

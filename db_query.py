@@ -1,8 +1,9 @@
+
+""" Module to extract particular data from MongoDB Database """
+
 from pymongo import MongoClient
 
-""" 
-    Module to extract particular data from MongoDB Database 
-"""
+
 class DbQueries():
     def __init__(self):
         #Connects to MondoDB database hosted in localhost
