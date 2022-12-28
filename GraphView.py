@@ -87,12 +87,18 @@ class BarChart(QWidget):
         
         axis = QtCharts.QBarCategoryAxis()
         axis.append(categories)
+        axis.setTitleText("Time")
+        axisY = QtCharts.QValueAxis()
+        axisY.setTitleText("Percentage (%)")
+        axisY.setRange(0, 100)
+        #axisY.setLabelFormat("%d")
         chart.createDefaultAxes()
         chart.setAxisX(axis, series)
-
+        chart.setAxisY(axisY, series)
+        series.attachAxis(axis)
+        series.attachAxis(axisY)
         chart.legend().setVisible(True)
         chart.legend().setAlignment(Qt.AlignBottom)
-
         chartView = QtCharts.QChartView(chart)
         chartView.setRenderHint(QPainter.Antialiasing)
         self.Vlayout.addWidget(chartView)
