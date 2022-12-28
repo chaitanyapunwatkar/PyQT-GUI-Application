@@ -7,14 +7,14 @@ count = 1
 for x in range(10):
     for j in range(2):
         for i in range(1,5):
-            img = Image.open("test{0}.jpg".format(i))
+            img = Image.open("samples/test{0}.jpg".format(i))
             img.save("Item1\{0}.jpg".format(count))
             count+=1
 
-    img_bad = Image.open("bad{}.jpg".format(rd.randint(1,5)))
+    img_bad = Image.open("samples/bad{}.jpg".format(rd.randint(1,5)))
     img_bad.save("Item1\{0}.jpg".format(count))
     count+=1
-    img = Image.open("test{}.jpg".format(rd.randint(6,7)))
+    img = Image.open("samples/test{}.jpg".format(rd.randint(6,7)))
     img.save("Item1\{0}.jpg".format(count))
     count+=1
 
