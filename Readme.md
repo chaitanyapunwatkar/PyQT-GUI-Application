@@ -35,6 +35,9 @@ The Project is about building a protoype of Post-Inspection Analysis. The tech s
 6. To run the code in your system, before running "main_gui.py" run th mongo_db_insert.py to insert the data in database.
 7. Make sure while running the "main_gui.py", db_query.py and GraphView.py is placed in same folder and the dataset folder named 'Item1' is also placed in same location
 
-![image](https://user-images.githubusercontent.com/31817696/209575350-bff1992b-d035-479f-b986-50e2133cb76b.png)
+## Analytics Tab View
+![image](https://user-images.githubusercontent.com/31817696/209830703-94803ade-ed03-47e5-965a-40cd5d75d803.png)
 
-![image](https://user-images.githubusercontent.com/31817696/209574942-d5df025c-e8dd-4925-9eb7-dfbc0583b38d.png)
+## Image Gallery View
+![image](https://user-images.githubusercontent.com/31817696/209830908-dfeae409-b7b0-4aed-963c-43e0eb7581e3.png)
+
