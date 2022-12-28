@@ -79,7 +79,7 @@ class BarChart(QWidget):
         
         chart = QtCharts.QChart()
         chart.addSeries(series)
-        chart.setTitle("Percent Example")
+        chart.setTitle("Item1_Analysis")
         chart.setAnimationOptions(QtCharts.QChart.SeriesAnimations)
 
         categories = ["9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM",
