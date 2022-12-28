@@ -50,6 +50,11 @@ class PieChart(QWidget):
 
 
 class BarChart(QWidget):
+    """ This Class represents BarGraph of 30 minutes interval of time with percentage of good and bad status
+
+    Args:
+        QWidget (Class): Inherits Properties of QWidgets to Add layouts and widgets 
+    """
     def __init__(self):
         super(BarChart, self).__init__() 
         self.Vlayout = QVBoxLayout(self) 
