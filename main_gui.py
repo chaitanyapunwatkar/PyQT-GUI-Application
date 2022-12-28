@@ -1,10 +1,10 @@
 import sys
 from PySide2.QtCore import *
 from PySide2.QtWidgets import * 
-from PySide2.QtGui import QPalette, QColor, QPixmap
+from PySide2.QtGui import *
 from db_query import DbQueries
 from math import ceil
-from GraphView import PieChart
+from GraphView import BarChart, PieChart
 
 class ImagePal(QWidget):
     """ This class is about representing the product images with color palette below it. 
@@ -167,7 +167,7 @@ class Analysis(QWidget):
         self.Hlayout.addWidget(dropBox)
         self.Hlayout.setAlignment(Qt.AlignLeft)
         dropBox.currentTextChanged.connect(self.print_drop_text)
-        self.Vlayout.addWidget(PieChart())
+        self.Vlayout.addWidget(BarChart())
         self.Vlayout.setAlignment(Qt.AlignTop)
         self.setLayout(self.Vlayout)
         
@@ -200,6 +200,7 @@ class Gallery(QWidget):
         self.Hlayout = QHBoxLayout(self)
         self.Stack = QStackedWidget(self)
         status_filter = QComboBox(self)
+        text = QLabel("Status: ", self)
         self.scrollWidgetContents = QWidget(self)
 
         self.Stack.addWidget(Gallery_All())
@@ -209,6 +210,7 @@ class Gallery(QWidget):
         status_filter.addItems(['All', 'Good', 'Bad'])
         self.Hlayout.addStretch(1)
         self.Vlayout.addLayout(self.Hlayout)
+        self.Hlayout.addWidget(text)
         self.Hlayout.addWidget(status_filter)
         self.Vlayout.addWidget(self.Stack)
         status_filter.currentTextChanged.connect(self.set_index)

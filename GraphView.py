@@ -38,7 +38,7 @@ class PieChart(QWidget):
         chart.addSeries(series)
         chart.createDefaultAxes()
         chart.setAnimationOptions(QtCharts.QChart.SeriesAnimations)
-        chart.setTitle("Item_1 Analysis")
+        chart.setTitle("Item1 Analysis")
  
         chart.legend().setVisible(True)
         chart.legend().setAlignment(Qt.AlignBottom)
@@ -47,3 +47,47 @@ class PieChart(QWidget):
         chartview.setRenderHint(QPainter.Antialiasing)
         self.Vlayout.addWidget(chartview)
         self.setLayout(self.Vlayout)
+
+
+class BarChart(QWidget):
+    def __init__(self):
+        super(BarChart, self).__init__() 
+        self.Vlayout = QVBoxLayout(self) 
+        db = DbQueries()
+        g_count = db.status_filter('Good')
+        b_count = db.status_filter('Bad')
+        
+        set0 = QtCharts.QBarSet("Good")
+        set1 = QtCharts.QBarSet("Bad")
+
+        set0.setBrush(QColor('lightgreen'))
+        set1.setBrush(QColor('red'))
+
+        
+        set0 << len(g_count) << len(g_count) << len(g_count) << len(g_count) << len(g_count) << len(g_count)
+        set1 << len(b_count) << len(b_count) << len(b_count) << len(b_count) << len(b_count) << len(b_count)
+
+
+        series = QtCharts.QPercentBarSeries()
+        series.append(set0)
+        series.append(set1)
+        
+        chart = QtCharts.QChart()
+        chart.addSeries(series)
+        chart.setTitle("Percent Example")
+        chart.setAnimationOptions(QtCharts.QChart.SeriesAnimations)
+
+        categories = ["9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM",
+                      "11:30 AM"]
+        
+        axis = QtCharts.QBarCategoryAxis()
+        axis.append(categories)
+        chart.createDefaultAxes()
+        chart.setAxisX(axis, series)
+
+        chart.legend().setVisible(True)
+        chart.legend().setAlignment(Qt.AlignBottom)
+
+        chartView = QtCharts.QChartView(chart)
+        chartView.setRenderHint(QPainter.Antialiasing)
+        self.Vlayout.addWidget(chartView)
